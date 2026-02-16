@@ -8,7 +8,9 @@ from langchain_chroma import Chroma
 from langchain_community.embeddings import DashScopeEmbeddings
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 from datetime import datetime
+import streamlit as st
 
+api_key=st.secrets["DASHSCOPE_API_KEY"]
 
 def check_md5(md5_str: str):
     """检查传入的md5字符串是否已经被处理过了
@@ -55,7 +57,7 @@ class KnowledgeBaseService(object):
         self.chroma = Chroma(
             collection_name=config.collection_name,     # 数据库的表名
             embedding_function=DashScopeEmbeddings(model="text-embedding-v4",
-                                                   dashscope_api_key="sk-78910f89afe74fe9893fffb571b1a9ec"
+                                                   dashscope_api_key=api_key
                                                    ),
             persist_directory=config.persist_directory,     # 数据库本地存储文件夹
         )     # 向量存储的实例 Chroma向量库对象
