@@ -9,3 +9,4 @@ langchain-community>=0.3.0
 # 向量数据库
 langchain-chroma>=0.1.0
 chromadb>=0.4.0gi
+dashscope>=1.14.0
